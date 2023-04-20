@@ -1,10 +1,10 @@
-﻿namespace tabuleiro
+﻿namespace board
 {
     class Position
     {
         #region  Attributes/Properties
 
-        public int linha { get; set; }
+        public int Lines { get; set; }
         public int coluna { get; set; }
 
         #endregion
@@ -13,7 +13,7 @@
 
         public Position(int linha, int coluna)
         {
-            this.linha = linha;
+            this.Lines = linha;
             this.coluna = coluna;
         }
 
@@ -23,14 +23,10 @@
 
         public override string ToString()
         {
-            return linha
+            return Lines
                 + ", "
                 + coluna;
         }
-
-        #endregion
-
-        #region  Events
 
         #endregion
     }

@@ -45,14 +45,17 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tabuleiro\Cor.cs" />
-    <Compile Include="tabuleiro\Piece.cs" />
-    <Compile Include="tabuleiro\Position.cs" />
-    <Compile Include="tabuleiro\Tabuleiro.cs" />
-    <Compile Include="Tela.cs" />
+    <Compile Include="board\Colors.cs" />
+    <Compile Include="board\Piece.cs" />
+    <Compile Include="board\Position.cs" />
+    <Compile Include="board\Board.cs" />
+    <Compile Include="Screen.cs" />
+    <Compile Include="xadrez\King.cs" />
+    <Compile Include="xadrez\Tower.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
