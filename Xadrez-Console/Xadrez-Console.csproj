@@ -53,6 +53,7 @@
     <Compile Include="Screen.cs" />
     <Compile Include="xadrez\King.cs" />
     <Compile Include="xadrez\Tower.cs" />
+    <Compile Include="xadrez\XadrezPosition.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
