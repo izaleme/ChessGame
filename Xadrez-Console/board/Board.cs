@@ -29,10 +29,47 @@
             return pieces[linha, coluna];
         }
 
+        public Piece Piece(Position pos)
+        {
+            if (!ValidPosition(pos))
+            {
+                ValidPositionException(pos);   
+            }
+
+            return pieces[pos.Line, pos.Column];
+        }
+
+        public bool ExistPiece(Position pos)
+        {
+            ValidPosition(pos);
+            return Piece(pos) != null;
+        }
+
         public void PutPieces(Piece p, Position pos)
         {
-            pieces[pos.Lines, pos.coluna] = p;
+            if (ExistPiece(pos))
+            {
+                throw new BoardException("One piece already exists in that position!");
+            }
+            pieces[pos.Line, pos.Column] = p;
             p.position = pos;
+        }
+
+        public bool ValidPosition(Position position)
+        {
+            if (position.Line < 0 || position.Line >= lines || position.Column < 0 || position.Column >= columns)
+            {
+                return false;   // Return quebra o método
+            }
+            return true;
+        }
+
+        public void ValidPositionException(Position position)
+        {
+            if (!ValidPosition(position))
+            {
+                throw new BoardException("Invalid Position!");
+            }
         }
 
         #endregion

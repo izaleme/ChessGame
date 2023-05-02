@@ -4,8 +4,8 @@
     {
         #region  Attributes/Properties
 
-        public int Lines { get; set; }
-        public int coluna { get; set; }
+        public int Line { get; set; }
+        public int Column { get; set; }
 
         #endregion
 
@@ -13,8 +13,8 @@
 
         public Position(int linha, int coluna)
         {
-            this.Lines = linha;
-            this.coluna = coluna;
+            Line = linha;
+            Column = coluna;
         }
 
         #endregion
@@ -23,9 +23,9 @@
 
         public override string ToString()
         {
-            return Lines
+            return Line
                 + ", "
-                + coluna;
+                + Column;
         }
 
         #endregion
