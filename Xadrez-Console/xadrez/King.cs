@@ -4,7 +4,7 @@ namespace xadrez
 {
     class King : Piece
     {
-        public King(Board tab, Color cor) : base(tab, cor)
+        public King(Board tab, Color color) : base(tab, color)
         {
 
         }

@@ -2,7 +2,7 @@
 using board;
 using xadrez;
 
-namespace Xadrez_Console
+namespace xadrez_console
 {
     class Program
     {
@@ -10,10 +10,27 @@ namespace Xadrez_Console
 
         static void Main(string[] args)
         {
-            XadrezPosition position = new XadrezPosition('C', 7);
+            try
+            {
+                ChessMatch match = new ChessMatch();
 
-            Console.WriteLine(position);
-            Console.WriteLine(position.ToPosition());
+                while (!match.finished)
+                {
+                    Console.Clear();
+                    Screen.PrintBoard(match.board);
+                    Console.Write("Origem: ");
+                    Position origin = Screen.ReadChessPosition().ToPosition();
+                    Console.Write("Destiny: ");
+                    Position destiny = Screen.ReadChessPosition().ToPosition();
+
+                    match.DoMovement(origin, destiny);
+                }
+
+            }
+            catch (BoardException e)
+            {
+                Console.WriteLine(e.Message);
+            }
 
             Console.ReadLine();
         }

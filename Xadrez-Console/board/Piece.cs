@@ -6,7 +6,7 @@
 
         public Position position { get; set; }
         public Color cor { get; protected set; }
-        public int qntdMovimentos { get; protected set; }
+        public int qtdMovimentos { get; protected set; }
         public Board tab { get; protected set; }
 
         #endregion
@@ -18,12 +18,17 @@
             this.position = null;
             this.tab = tab;
             this.cor = cor;
-            this.qntdMovimentos = 0;
+            this.qtdMovimentos = 0;
         }
 
         #endregion
 
         #region  Methods
+
+        public void addQtdMove()
+        {
+            qtdMovimentos++;
+        }
 
         #endregion
     }

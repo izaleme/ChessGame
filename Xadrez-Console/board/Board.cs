@@ -31,11 +31,6 @@
 
         public Piece Piece(Position pos)
         {
-            if (!ValidPosition(pos))
-            {
-                ValidPositionException(pos);   
-            }
-
             return pieces[pos.Line, pos.Column];
         }
 
@@ -53,6 +48,19 @@
             }
             pieces[pos.Line, pos.Column] = p;
             p.position = pos;
+        }
+
+        public Piece RemovePiece(Position position)
+        {
+            if (Piece(position) == null)
+            {
+                return null;
+            }
+
+            Piece aux = Piece(position);
+            aux.position = null;
+            pieces[position.Line, position.Column] = null;
+            return aux;
         }
 
         public bool ValidPosition(Position position)

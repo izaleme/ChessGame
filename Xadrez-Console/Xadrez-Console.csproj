@@ -51,9 +51,10 @@
     <Compile Include="board\Position.cs" />
     <Compile Include="board\Board.cs" />
     <Compile Include="Screen.cs" />
+    <Compile Include="xadrez\ChessMatch.cs" />
     <Compile Include="xadrez\King.cs" />
     <Compile Include="xadrez\Tower.cs" />
-    <Compile Include="xadrez\XadrezPosition.cs" />
+    <Compile Include="xadrez\ChessPosition.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -2,7 +2,7 @@
 
 namespace xadrez
 {
-    class XadrezPosition
+    class ChessPosition
     {
         #region  Attributes/Properties
 
@@ -13,7 +13,7 @@ namespace xadrez
 
         #region  Builders
 
-        public XadrezPosition(char column, int line)
+        public ChessPosition(char column, int line)
         {
             Column = column;
             Line = line;
