@@ -13,24 +13,25 @@
 
         #region  Builders
 
-        public Board(int linhas, int colunas)
+        public Board(int lines, int columns)
         {
-            this.lines = linhas;
-            this.columns = colunas;
-            pieces = new Piece[linhas, colunas];
+            this.lines = lines;
+            this.columns = columns;
+            pieces = new Piece[lines, columns];
         }
 
         #endregion
 
         #region  Methods
 
-        public Piece Piece(int linha, int coluna)
+        public Piece Piece(int line, int column)
         {
-            return pieces[linha, coluna];
+            return pieces[line, column];
         }
 
         public Piece Piece(Position pos)
         {
+            ValidPositionException(pos);
             return pieces[pos.Line, pos.Column];
         }
 
@@ -40,14 +41,14 @@
             return Piece(pos) != null;
         }
 
-        public void PutPieces(Piece p, Position pos)
+        public void PutPiece(Piece p, Position pos)
         {
             if (ExistPiece(pos))
             {
                 throw new BoardException("One piece already exists in that position!");
             }
             pieces[pos.Line, pos.Column] = p;
-            p.position = pos;
+            p.Position = pos;
         }
 
         public Piece RemovePiece(Position position)
@@ -58,7 +59,7 @@
             }
 
             Piece aux = Piece(position);
-            aux.position = null;
+            aux.Position = null;
             pieces[position.Line, position.Column] = null;
             return aux;
         }

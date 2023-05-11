@@ -1,13 +1,13 @@
 ﻿namespace board
 {
-    class Piece
+    abstract class Piece
     {
         #region  Attributes/Properties
 
-        public Position position { get; set; }
-        public Color cor { get; protected set; }
-        public int qtdMovimentos { get; protected set; }
-        public Board tab { get; protected set; }
+        public Position Position { get; set; }
+        public Color Color { get; protected set; }
+        public int QtdMovimentos { get; protected set; }
+        public Board Board { get; protected set; }
 
         #endregion
 
@@ -15,20 +15,49 @@
 
         public Piece(Board tab, Color cor)
         {
-            this.position = null;
-            this.tab = tab;
-            this.cor = cor;
-            this.qtdMovimentos = 0;
+            this.Position = null;
+            this.Board = tab;
+            this.Color = cor;
+            this.QtdMovimentos = 0;
         }
 
         #endregion
 
         #region  Methods
 
-        public void addQtdMove()
+        public void AddQtdMove()
         {
-            qtdMovimentos++;
+            QtdMovimentos++;
         }
+
+        public void RemoveQtdeMove()
+        {
+            QtdMovimentos--;
+        }
+
+        public bool ExistPossibleMoves()
+        {
+            bool[,] mat = PossibleMoves();
+
+            for (int i = 0; i < Board.lines; i++)
+            {
+                for (int j = 0; j < Board.lines; j++)
+                {
+                    if (mat[i, j])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool PossibleMoves(Position pos)
+        {
+            return PossibleMoves()[pos.Line, pos.Column];
+        }
+
+        public abstract bool[,] PossibleMoves();
 
         #endregion
     }

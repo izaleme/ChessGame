@@ -11,15 +11,21 @@
 
         #region  Builders
 
-        public Position(int linha, int coluna)
+        public Position(int line, int column)
         {
-            Line = linha;
-            Column = coluna;
+            Line = line;
+            Column = column;
         }
 
         #endregion
 
         #region  Methods
+
+        public void SetValues(int line, int column)
+        {
+            Line = line;
+            Column = column;
+        }
 
         public override string ToString()
         {

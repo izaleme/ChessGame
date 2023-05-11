@@ -16,19 +16,38 @@ namespace xadrez_console
 
                 while (!match.finished)
                 {
-                    Console.Clear();
-                    Screen.PrintBoard(match.board);
-                    Console.Write("Origem: ");
-                    Position origin = Screen.ReadChessPosition().ToPosition();
-                    Console.Write("Destiny: ");
-                    Position destiny = Screen.ReadChessPosition().ToPosition();
+                    try
+                    {
+                        Console.Clear();
+                        Screen.PrintMatch(match);
 
-                    match.DoMovement(origin, destiny);
+                        Console.WriteLine();
+                        Console.Write("Origin: ");
+                        Position origin = Screen.ReadChessPosition().ToPosition();
+                        match.ValidateOriginPosition(origin);
+
+                        bool[,] possiblePositions = match.board.Piece(origin).PossibleMoves();  // Pega os possíveis movimentos da peça escolhida
+
+                        Console.Clear();
+                        Screen.PrintBoard(match.board, possiblePositions);
+
+                        Console.WriteLine();
+                        Console.Write("Destiny: ");
+                        Position destiny = Screen.ReadChessPosition().ToPosition();
+                        match.ValidateDestinyPosition(origin, destiny);
+
+                        match.DoMovement(origin, destiny);
+                    }
+                    catch (BoardException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        Console.ReadLine();
+                    }
                 }
-
+                Console.Clear();
+                Screen.PrintMatch(match);
             }
-            catch (BoardException e)
-            {
+            catch (BoardException e) {
                 Console.WriteLine(e.Message);
             }
 
