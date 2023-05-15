@@ -36,7 +36,7 @@ namespace xadrez_console
                         Position destiny = Screen.ReadChessPosition().ToPosition();
                         match.ValidateDestinyPosition(origin, destiny);
 
-                        match.DoMovement(origin, destiny);
+                        match.PerformMove(origin, destiny);
                     }
                     catch (BoardException e)
                     {

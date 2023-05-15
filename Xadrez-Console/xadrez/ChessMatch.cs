@@ -9,10 +9,10 @@ namespace xadrez
 
         public Board board { get; private set; }
         public int turn { get; private set; }
-        public Color currentPlayer { get; set; }
+        public Color currentPlayer { get; private set; }
         public bool finished { get; private set; }
         public bool check { get; private set; }
-        public Piece vulnerableEnPassant { get; set; }
+        public Piece vulnerableEnPassant { get; private set; }
 
         private HashSet<Piece> pieces;
         private HashSet<Piece> taken;
@@ -47,7 +47,7 @@ namespace xadrez
             if (capturedPiece != null)
                 taken.Add(capturedPiece);
 
-            // #jogadaespecial roque pequeno    // ARRUMAR
+            // #jogadaespecial roque pequeno
             if (p is King && destiny.Column == origin.Column + 2) {
                 Position originT = new Position(origin.Line, origin.Column + 3);
                 Position destinyT = new Position(origin.Line, origin.Column + 1);
@@ -56,7 +56,7 @@ namespace xadrez
                 board.PutPiece(T, destinyT);
             }
 
-            // #jogadaespecial roque grande     // ARRUMAR
+            // #jogadaespecial roque grande
             if (p is King && destiny.Column == origin.Column - 2) {
                 Position originT = new Position(origin.Line, origin.Column - 4);
                 Position destinyT = new Position(origin.Line, origin.Column - 1);
@@ -65,7 +65,7 @@ namespace xadrez
                 board.PutPiece(T, destinyT);
             }
 
-            // #jogadaespecial en passant       // ARRUMAR
+            // #jogadaespecial en passant
             if (p is Pawn)
             {
                 if (origin.Column != destiny.Column && capturedPiece == null)
@@ -135,9 +135,9 @@ namespace xadrez
         {
             Piece capturedPiece = DoMovement(origin, destiny);
 
-            if (IsOnCheck(currentPlayer))
+            if (IsOnCheck(currentPlayer))   // Se o jogador se colocar em check
             {
-                UndoMove(origin, destiny, capturedPiece);
+                UndoMove(origin, destiny, capturedPiece);   // Desfaz o movimento
                 throw new BoardException("You can't put yourself in check!");
             }
 
@@ -156,12 +156,13 @@ namespace xadrez
                 }
             }
 
-            if (IsOnCheck(Adversary(currentPlayer)))
+            if (IsOnCheck(Adversary(currentPlayer))) {      // Última linha que roda antes de parar de funcionar
                 check = true;
-            else
+            } else {
                 check = false;
+            }
 
-            if (IsOnCheck(Adversary(currentPlayer))) {
+            if (TestCheckMate(Adversary(currentPlayer))) {
                 finished = true;
             } else {
                 turn++;
@@ -269,13 +270,13 @@ namespace xadrez
 
         public bool TestCheckMate(Color color)
         {
-            if (!IsOnCheck(color))
+            if (!IsOnCheck(color))  // Se não estiver em check, não pode estar em checkmate
                 return false;
 
             foreach (Piece x in PiecesInGame(color))
             {
                 bool[,] mat = x.PossibleMoves();
-                for (int i = 0; i  < board.lines; i++) {
+                for (int i = 0; i < board.lines; i++) {
                     for (int j = 0; j < board.columns; j++) {
                         if (mat[i, j])
                         {

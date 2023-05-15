@@ -6,7 +6,7 @@ namespace xadrez
     {
         private ChessMatch match;
 
-        public King(Board tab, Color color, ChessMatch match) : base(tab, color)
+        public King(Board board, Color color, ChessMatch match) : base(board, color)
         {
             this.match = match;
         }

@@ -31,13 +31,12 @@
 
         public Piece Piece(Position pos)
         {
-            ValidPositionException(pos);
             return pieces[pos.Line, pos.Column];
         }
 
         public bool ExistPiece(Position pos)
         {
-            ValidPosition(pos);
+            ValidPositionException(pos);
             return Piece(pos) != null;
         }
 

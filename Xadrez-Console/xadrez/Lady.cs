@@ -9,7 +9,7 @@ namespace xadrez
 
         public override string ToString()
         {
-            return "L";
+            return "L";     // Queen
         }
 
         private bool CanMove(Position position)

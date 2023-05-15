@@ -66,15 +66,15 @@ namespace xadrez_console
             Console.WriteLine("  A B C D E F G H");
         }
 
-        public static void PrintBoard(Board tab, bool[,] possiblePositions)
+        public static void PrintBoard(Board board, bool[,] possiblePositions)
         {
             ConsoleColor originalBackground = Console.BackgroundColor;
             ConsoleColor diffBackground = ConsoleColor.DarkGray;
 
-            for (int i = 0; i < tab.lines; i++)
+            for (int i = 0; i < board.lines; i++)
             {
                 Console.Write(8 - i + " ");
-                for (int j = 0; j < tab.columns; j++)
+                for (int j = 0; j < board.columns; j++)
                 {
                     if (possiblePositions[i, j])
                     {
@@ -84,7 +84,8 @@ namespace xadrez_console
                     {
                         Console.BackgroundColor = originalBackground;
                     }
-                    PrintPiece(tab.Piece(i, j));
+                    PrintPiece(board.Piece(i, j));
+                    Console.BackgroundColor = originalBackground;
                 }
                 Console.WriteLine();
             }

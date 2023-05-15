@@ -13,11 +13,11 @@
 
         #region  Builders
 
-        public Piece(Board tab, Color cor)
+        public Piece(Board board, Color color)
         {
             this.Position = null;
-            this.Board = tab;
-            this.Color = cor;
+            this.Board = board;
+            this.Color = color;
             this.QtdMovimentos = 0;
         }
 

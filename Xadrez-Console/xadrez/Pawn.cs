@@ -20,7 +20,7 @@ namespace xadrez
             return p != null && p.Color != Color;
         }
 
-        private bool Free(Position pos)
+        private bool Free(Position pos)     // Se a posição está livre
         {
             return Board.Piece(pos) == null;
         }
