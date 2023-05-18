@@ -24,7 +24,7 @@ namespace xadrez
             Position pos = new Position(0, 0);
 
             // Left (esquerda)
-            Position.SetValues(Position.Line, Position.Column - 1);
+            pos.SetValues(Position.Line, Position.Column - 1);
             while (Board.ValidPosition(pos) && CanMove(pos))
             {
                 mat[pos.Line, pos.Column] = true;
@@ -35,7 +35,7 @@ namespace xadrez
             }
 
             // Right (direita)
-            Position.SetValues(Position.Line, Position.Column + 1);
+            pos.SetValues(Position.Line, Position.Column + 1);
             while (Board.ValidPosition(pos) && CanMove(pos))
             {
                 mat[pos.Line, pos.Column] = true;
@@ -46,7 +46,7 @@ namespace xadrez
             }
 
             // Above (acima)
-            Position.SetValues(Position.Line - 1, Position.Column);
+            pos.SetValues(Position.Line - 1, Position.Column);
             while (Board.ValidPosition(pos) && CanMove(pos))
             {
                 mat[pos.Line, pos.Column] = true;
@@ -57,7 +57,7 @@ namespace xadrez
             }
 
             // Below (abaixo)
-            Position.SetValues(Position.Line + 1, Position.Column);
+            pos.SetValues(Position.Line + 1, Position.Column);
             while (Board.ValidPosition(pos) && CanMove(pos))
             {
                 mat[pos.Line, pos.Column] = true;
@@ -67,8 +67,8 @@ namespace xadrez
                 pos.SetValues(pos.Line + 1, pos.Column);
             }
 
-            // Northwest (noroeste)
-            Position.SetValues(Position.Line - 1, Position.Column - 1);
+            // NO - Northwest (noroeste)
+            pos.SetValues(Position.Line - 1, Position.Column - 1);
             while (Board.ValidPosition(pos) && CanMove(pos))
             {
                 mat[pos.Line, pos.Column] = true;
@@ -78,8 +78,8 @@ namespace xadrez
                 pos.SetValues(pos.Line - 1, pos.Column - 1);
             }
 
-            // North East (nordeste)
-            Position.SetValues(Position.Line - 1, Position.Column + 1);
+            // NE - North East (nordeste)
+            pos.SetValues(Position.Line - 1, Position.Column + 1);
             while (Board.ValidPosition(pos) && CanMove(pos))
             {
                 mat[pos.Line, pos.Column] = true;
@@ -89,8 +89,8 @@ namespace xadrez
                 pos.SetValues(pos.Line - 1, pos.Column + 1);
             }
 
-            // Southeast (sudeste)
-            Position.SetValues(Position.Line + 1, Position.Column + 1);
+            // SE - Southeast (sudeste)
+            pos.SetValues(Position.Line + 1, Position.Column + 1);
             while (Board.ValidPosition(pos) && CanMove(pos))
             {
                 mat[pos.Line, pos.Column] = true;
@@ -100,8 +100,8 @@ namespace xadrez
                 pos.SetValues(pos.Line + 1, pos.Column + 1);
             }
 
-            // South-West (sudoeste)
-            Position.SetValues(Position.Line + 1, Position.Column - 1);
+            // SO - South-West (sudoeste)
+            pos.SetValues(Position.Line + 1, Position.Column - 1);
             while (Board.ValidPosition(pos) && CanMove(pos))
             {
                 mat[pos.Line, pos.Column] = true;

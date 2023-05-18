@@ -45,7 +45,9 @@ namespace xadrez
             Piece capturedPiece = board.RemovePiece(destiny);
             board.PutPiece(p, destiny);
             if (capturedPiece != null)
+            {
                 taken.Add(capturedPiece);
+            }
 
             // #jogadaespecial roque pequeno
             if (p is King && destiny.Column == origin.Column + 2) {
@@ -72,9 +74,13 @@ namespace xadrez
                 {
                     Position posP;
                     if (p.Color == Color.White)
+                    {
                         posP = new Position(destiny.Line + 1, destiny.Column);
+                    }
                     else
+                    {
                         posP = new Position(destiny.Line - 1, destiny.Column);
+                    }
 
                     capturedPiece = board.RemovePiece(posP);
                     taken.Add(capturedPiece);
@@ -262,8 +268,11 @@ namespace xadrez
             foreach (Piece x in PiecesInGame(Adversary(color)))
             {
                 bool[,] mat = x.PossibleMoves();
+
                 if (mat[K.Position.Line, K.Position.Column])
+                {
                     return true;
+                }
             }
             return false;
         }

@@ -13,38 +13,31 @@
 
         #region  Builders
 
-        public Piece(Board board, Color color)
-        {
-            this.Position = null;
-            this.Board = board;
-            this.Color = color;
-            this.QtdMovimentos = 0;
+        public Piece(Board board, Color color) {
+            Position = null;
+            Board = board;
+            Color = color;
+            QtdMovimentos = 0;
         }
 
         #endregion
 
         #region  Methods
 
-        public void AddQtdMove()
-        {
+        public void AddQtdMove() {
             QtdMovimentos++;
         }
 
-        public void RemoveQtdeMove()
-        {
+        public void RemoveQtdeMove() {
             QtdMovimentos--;
         }
 
-        public bool ExistPossibleMoves()
-        {
+        public bool ExistPossibleMoves() {
             bool[,] mat = PossibleMoves();
 
-            for (int i = 0; i < Board.lines; i++)
-            {
-                for (int j = 0; j < Board.lines; j++)
-                {
-                    if (mat[i, j])
-                    {
+            for (int i = 0; i < Board.lines; i++) {
+                for (int j = 0; j < Board.columns; j++) {
+                    if (mat[i, j]) {
                         return true;
                     }
                 }
@@ -52,8 +45,7 @@
             return false;
         }
 
-        public bool PossibleMoves(Position pos)
-        {
+        public bool PossibleMoves(Position pos) {
             return PossibleMoves()[pos.Line, pos.Column];
         }
 

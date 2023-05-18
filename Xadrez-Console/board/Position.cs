@@ -11,8 +11,7 @@
 
         #region  Builders
 
-        public Position(int line, int column)
-        {
+        public Position(int line, int column) {
             Line = line;
             Column = column;
         }
@@ -21,14 +20,12 @@
 
         #region  Methods
 
-        public void SetValues(int line, int column)
-        {
+        public void SetValues(int line, int column) {
             Line = line;
             Column = column;
         }
 
-        public override string ToString()
-        {
+        public override string ToString() {
             return Line
                 + ", "
                 + Column;
